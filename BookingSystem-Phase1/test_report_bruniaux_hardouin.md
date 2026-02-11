@@ -9,16 +9,17 @@
 **Scope:**  
 - Tested components:
 User registration and input handling  
-Input validation mechanisms  
-Sensitive data encryption
-Token Management
+Input validation mechanisms   
+Sensitive data encryption  
+Token Management  
 
 - Exclusions:
-Error Handling and Logging
-Third-Party Components
-Usability and Performance
-GDPR Compliance
+Error Handling and Logging  
+Third-Party Components  
+Usability and Performance  
+GDPR Compliance  
 Privacy by Design (PbD) Principles
+
 - Test approach: Grey-box
 
 **Test environment & dates:**  
