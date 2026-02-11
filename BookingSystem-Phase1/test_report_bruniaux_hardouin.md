@@ -43,12 +43,12 @@ Privacy by Design (PbD) Principles
 **Short summary:** 
 The web application’s user registration, input validation, and sensitive data handling mechanisms were tested. Several critical and medium vulnerabilities were identified, including missing CSP header, weak or plain-text password storage, absence of CSRF protection, lack of domain validation, and weak password policies. Immediate remediation is recommended to protect user data and maintain system integrity and confidentiality
 
-**Overall risk level:** High
+**Overall risk level:** Medium
 
-**Top 5 immediate actions:**  
+**Top 5 immediate actions:**
 
-1. Content Security Policy (CSP) Header Not Set
-  Deploy a Content-Security-Policy header to restrict the loading of scripts, styles, and images to trusted domains only.
+1. Encrypt Sensitive Data and Secure Error Handling
+  Encrypt personal and authentication data both at rest and in transit using up-to-date algorithms.
 
 2. Secure Password Storage and Enforce Strong Password Policies
   Hash and salt all passwords using strong algorithms.
@@ -63,8 +63,8 @@ The web application’s user registration, input validation, and sensitive data 
   Ensure only valid email domains are accepted.
   Reject clearly invalid or malformed data to prevent logical bypasses or errors.
 
-5. Encrypt Sensitive Data and Secure Error Handling
-  Encrypt personal and authentication data both at rest and in transit using up-to-date algorithms.
+5. Content Security Policy (CSP) Header Not Set  
+  Deploy a Content-Security-Policy header to restrict the loading of scripts, styles, and images to trusted domains only.
   
 ---
 
