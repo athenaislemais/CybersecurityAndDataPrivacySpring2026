@@ -74,7 +74,8 @@ Do not expose full error details to users, as this can reveal sensitive informat
 | F-02 | 🔴 High | Path Traversal | Allows directory traversal sequences in URL exposing server files | Evidence |
 | F-03 | 🟠 Medium | Absence of Anti-CSRF Tokens | The CSRF token is not properly validated on the server side. | Burp log or response headers |
 | F-04 | 🟡 Low | Application Error Disclosure | Reveals detailed internal error messages when invalid input is submitted | Screenshot of registration success |
-| F-05 | 🟡 Low | Weak password policy | Accepts passwords like "12345" | Screenshot of registration success |
+| F-05 | 🟡 Low | Weak password policy | Accepts passwords consisting only of blank spaces (" "). | <img width="912" height="167" alt="image" src="https://github.com/user-attachments/assets/3885fd00-e920-46c4-9a90-f8f5dfe4b1d3" />
+ |
 
 
 ---
