@@ -15,13 +15,17 @@
 - Start: 01/02/2026 
 - End:  04/02/2026
 - Test environment details (OS, runtime, DB, browsers):
+  
   OS: Windows 11 Version 25H2 (Build 26200.7840)
+  
   Runtime: Docker 29.1.5
+  
   Database: PostgreSQL
-  Brower: Mozilla Firefox
+  
+  Brower: Mozilla Firefox  
 
 **Assumptions & constraints:**  
-- First time using Docker and Zap OWASP.
+- First time using Docker and OWASP Zap.
 
 # 2️⃣ Executive Summary
 
