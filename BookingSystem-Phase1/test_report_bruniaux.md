@@ -1,6 +1,6 @@
 # 1️⃣ Introduction
 
-**Tester(s):**  
+**Testers:**  
 - Name:  Athénaïs Bruniaux and Romane Hardouin
 
 **Purpose:**  
@@ -9,14 +9,14 @@
 **Scope:**  
 - Tested components:  
 - Exclusions:  
-- Test approach: Gray-box
+- Test approach: Grey-box
 
 **Test environment & dates:**  
 - Start: 01/02/2026 
 - End:  04/02/2026
 - Test environment details (OS, runtime, DB, browsers):
   
-  OS: Windows 11 Version 25H2 (Build 26200.7840)
+  OS: Windows 11 Version 25H2 
   
   Runtime: Docker 29.1.5
   
@@ -29,16 +29,26 @@
 
 # 2️⃣ Executive Summary
 
-**Short summary (1-2 sentences):**  
+**Short summary:** 
+The web application’s user registration, input handling, and data encryption mechanisms have several critical and medium vulnerabilities, including SQL injection, path traversal, weak passwords, absence of CSRF protection, and potential exposure of sensitive data. Immediate remediation is required to prevent exploitation and ensure the confidentiality, integrity, and security of user data.
 
-**Overall risk level:** (Low / Medium / High / Critical)
+**Overall risk level:** High
 
 **Top 5 immediate actions:**  
-1.  
-2.  
-3.  
-4.  
-5.  
+1. Fix input validation and use safe database queries:
+Prevent SQL injection and path traversal by validating and sanitizing all user inputs. Always use parameterized queries or prepared statements to interact with the database safely.  
+
+2. Enforce strong passwords and add Multi-Factor Authentication (MFA):
+Do not allow users to register with weak passwords. Encourage or require multi-factor authentication to make accounts more secure.  
+
+3. Protect against Cross-Site Request Forgery (CSRF) attacks:
+Add anti-CSRF tokens to forms and sensitive actions. Use techniques like double-submitted cookies, and require separate confirmation for high-risk operations to ensure the user intended to perform them.  
+
+4. Encrypt sensitive data properly:
+Identify which data is valuable and must be protected. Ensure that all sensitive data, both in transit and at rest, is encrypted using strong and well-vetted encryption algorithms.  
+
+5. Handle errors safely and log properly:
+Do not expose full error details to users, as this can reveal sensitive information. Maintain detailed logs internally to detect suspicious activity and support incident investigation.   
 
 ---
 
@@ -61,8 +71,11 @@
 | ID | Severity | Finding | Description | Evidence / Proof |
 |------|-----------|----------|--------------|------------------|
 | F-01 | 🔴 High | SQL Injection in registration | Input field allows `' OR '1'='1` injection | Screenshot or sqlmap result |
-| F-02 | 🟠 Medium | Session fixation | Session ID remains unchanged after login | Burp log or response headers |
-| F-03 | 🟡 Low | Weak password policy | Accepts passwords like "12345" | Screenshot of registration success |
+| F-02 | 🔴 High | Path Traversal | Allows directory traversal sequences in URL exposing server files | Evidence |
+| F-03 | 🟠 Medium | Absence of Anti-CSRF Tokens | The CSRF token is not properly validated on the server side. | Burp log or response headers |
+| F-04 | 🟡 Low | Application Error Disclosure | Reveals detailed internal error messages when invalid input is submitted | Screenshot of registration success |
+| F-05 | 🟡 Low | Weak password policy | Accepts passwords like "12345" | Screenshot of registration success |
+
 
 ---
 
