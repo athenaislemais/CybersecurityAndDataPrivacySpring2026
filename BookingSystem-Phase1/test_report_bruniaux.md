@@ -70,13 +70,9 @@
 
 # 5️⃣ OWASP ZAP Test Report (Attachment)
 
-**Purpose:**  
+ 
 - [zap_report_round1.md](./zap_report_round1.md)
 ---
-
-**Instructions:**
-1. Check lecture recordings
-2. Save the report as `zap_report_round1.md` and link it below.
 
 ---
 
