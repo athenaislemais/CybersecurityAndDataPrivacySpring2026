@@ -50,21 +50,21 @@ The web application’s user registration, input validation, and sensitive data 
 1. Encrypt Sensitive Data and Secure Error Handling
   Encrypt personal and authentication data both at rest and in transit using up-to-date algorithms.
 
-2. Secure Password Storage and Enforce Strong Password Policies
+2. Content Security Policy (CSP) Header Not Set  
+  Deploy a Content-Security-Policy header to restrict the loading of scripts, styles, and images to trusted domains only.
+
+3. Secure Password Storage and Enforce Strong Password Policies
   Hash and salt all passwords using strong algorithms.
   Reject weak passwords, including blanks or trivial patterns.
   Encourage or require Multi-Factor Authentication (MFA) for all accounts.
 
-3. Add CSRF Protection for Forms and Sensitive Actions
+4. Add CSRF Protection for Forms and Sensitive Actions
   Implement server-side anti-CSRF tokens for registration and other critical forms.
   Use double-submitted cookies or per-request tokens to validate user actions.
 
-4. Validate and Restrict Input for Email and Other Fields
+5. Validate and Restrict Input for Email and Other Fields
   Ensure only valid email domains are accepted.
   Reject clearly invalid or malformed data to prevent logical bypasses or errors.
-
-5. Content Security Policy (CSP) Header Not Set  
-  Deploy a Content-Security-Policy header to restrict the loading of scripts, styles, and images to trusted domains only.
   
 ---
 
