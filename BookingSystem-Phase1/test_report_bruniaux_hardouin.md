@@ -1,7 +1,7 @@
 # 1️⃣ Introduction
 
 **Testers:**  
-- Name:  Athénaïs Bruniaux and Romane Hardouin
+- Names:  Athénaïs Bruniaux and Romane Hardouin
 
 **Purpose:**  
 - Identify as many anomalies and vulnerabilities as possible and categorize the findings. Vulnerabilities such as: Authentication and Authorization, Input Validation,  Session Management, Data Encryption.
