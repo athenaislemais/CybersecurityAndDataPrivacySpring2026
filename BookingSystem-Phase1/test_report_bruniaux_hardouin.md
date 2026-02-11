@@ -41,7 +41,7 @@ Privacy by Design (PbD) Principles
 # 2️⃣ Executive Summary
 
 **Short summary:** 
-The web application’s user registration, input validation, and sensitive data handling mechanisms were tested. The zap scan found 2 high risks vulnerabilities such as SQL injection and Path Traversal. Manually, several critical and medium vulnerabilities were identified, including missing CSP header, weak or plain-text password storage, absence of CSRF protection, lack of domain validation, and weak password policies. Immediate remediation is recommended to protect user data and maintain system integrity and confidentiality.
+The web application’s user registration, input validation, and sensitive data handling mechanisms were tested. The zap scan found 2 high vulnerabilities such as SQL injection and Path Traversal. Manually, several critical and medium vulnerabilities were identified, including missing CSP header, weak or plain-text password storage, absence of CSRF protection, lack of domain validation, and weak password policies. Immediate remediation is recommended to protect user data and maintain system integrity and confidentiality.
 
 **Overall risk level:** High
 
