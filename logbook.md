@@ -12,7 +12,7 @@
 | 29.01.2025 | 4 | Portswigger | Labs : 1 from SQL injection, 2 from Authentication, 2 from Access control |
 | 01.01.2025 | 8 | Phase 1 Task 1 | How to use zap and Docker, Detect attacks on the website via Docker |
 | 04.01.2025 | 9 | Phase 1 Task 1 | Precise and find Vulnerabilities manually with proofs |
-| 04.01.2025 | 6 | Phase 1 Task 2 | Installed knew application on Docker and check if the vulnerabilities were fixed |
+| 04.01.2025 | 6 | Phase 1 Task 2 | Installed new application on Docker and checked if the vulnerabilities were fixed |
 
 
 
