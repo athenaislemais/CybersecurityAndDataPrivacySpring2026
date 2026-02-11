@@ -7,13 +7,13 @@
 - Identify as many anomalies and vulnerabilities as possible and categorize the findings. Vulnerabilities such as: Authentication and Authorization, Input Validation,  Session Management, Data Encryption.
 
 **Scope:**  
-- Tested components:
+- Tested components:  
 User registration and input handling  
 Input validation mechanisms   
 Sensitive data encryption  
 Token Management  
 
-- Exclusions:
+- Exclusions:  
 Error Handling and Logging  
 Third-Party Components  
 Usability and Performance  
