@@ -14,6 +14,8 @@
 | 01.02.2025 | 6 | Phase 1 Task 1 | How to use zap and Docker, Detect attacks on the website via Docker|
 | 04.02.2025 | 3 | Phase 1 Task 1 | Precise and find Vulnerabilities manually with proofs |
 | 11.02.2025 | 6 | Phase 1 Task 2 | Installed new application on Docker and checked if the vulnerabilities were fixed |
+| 12.02.2025 | 5 | Lab session at Campus | Checked up on the uses of the softwares + a Portswigger lab with Burp Suite + Beginning of Phase 2 |
+
 
 
 
