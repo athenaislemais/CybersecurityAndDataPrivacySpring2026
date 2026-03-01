@@ -63,15 +63,11 @@
 
 **✅ Can do**
 
-* Can do all of the rights of reserver and guest
-* Can delete reservation
-* Can change reserver username
-* Can update all reservations
-* Can delete all reservations
-* Can change ressources 
-* Can add a resource — `/ressources` (spec 4)
+* Can do all what a reserver and a guest can do
+* Can add and modify resources — `/ressources` (spec 4)
+* Can add, modify and remove reservations — `/reservations` (spec 4)
+* Can change all reserver usernames
 * Can access API endpoints `/api/users`, `/api/reservations`, `/api/resources` (spec 4, & 8)  
-* Can manage all reservations — `/reservations` (spec 4)  
 
 **❌ Cannot do**
 
