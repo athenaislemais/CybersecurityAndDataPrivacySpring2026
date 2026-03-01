@@ -75,7 +75,6 @@
 
 **❌ Cannot do**
 
-* Cannot view all users (spec 4 & 5)
 * Cannot delete reserver ⚠️ (does **not** match spec 5)
 * Cannot delete ressources ⚠️ (does **not** match spec 4)
 
