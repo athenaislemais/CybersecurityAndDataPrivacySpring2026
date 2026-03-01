@@ -1,6 +1,5 @@
 # 🔐 **Authorization Test**
 
----
 
 ### 🧑‍🦲 **Guest**
 
