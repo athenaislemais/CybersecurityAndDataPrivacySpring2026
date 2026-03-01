@@ -21,10 +21,11 @@
 
 **✅ Can do**
 
+* Can access of the system on its web browser (spec 1)
 * Can access login form — `/login` (spec 2)
 * Can access registration form — `/register` (spec 2)
 * Can access booked ressources (spec 8)
-* Can access API endpoints without authentication, were the guest can see token, username and role — `/api/users`, `/api/reservations`, `/api/resources` ⚠️ (does **not** match any spec, spec 8 & 9 not respected)  
+* Can access API endpoints without authentication, were the guest can see token, username and role — `/api/users`, `/api/reservations`, `/api/resources` ⚠️ (does **not** match any spec, spec 8 9 & 10 not respected)  
 
 **❌ Cannot do**
 
@@ -45,8 +46,8 @@
 * Can book a reservation — `/reservation` (spec 6 & 7)  
 * Can add ressources — `/resources` 
 * Can access API endpoints `/api/users` and `/api/resources` (spec 3 & 8)
-* Can update the username reserver on its own reservation ⚠️ (does **not** match any spec)
-* Can update ressources 
+* Can update the username reserver on its own reservation ⚠️ (does *not* respect 9 & 10)
+* Can update ressources name
 
 **❌ Cannot do**
 
