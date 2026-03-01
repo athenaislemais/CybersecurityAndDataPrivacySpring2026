@@ -21,20 +21,18 @@
 
 **✅ Can do**
 
-* Can view public resource list — `/resources` (spec 8)  
-* Can access login form — `/login` (spec 2)  
-* Can access registration form — `/register` (spec 2)  
-* Can view robots.txt — `/robots.txt` (spec 1)  
-* Can view sitemap — `/sitemap.xml` (spec 1)  
-* Can access API endpoints without authentication — `/api/users`, `/api/reservations`, `/api/resources` ⚠️ (does **not** match any spec; backend access control missing, potential GDPR issue spec 9 & 10)  
+* Can access login form — `/login` (spec 2)
+* Can access registration form — `/register` (spec 2)
+* Can access booked ressources (spec 8)
+* Can access API endpoints without authentication, were the guest can see token, username and role — `/api/users`, `/api/reservations`, `/api/resources` ⚠️ (does **not** match any spec, spec 8 & 9 not respected)  
 
 **❌ Cannot do**
 
-* Cannot access reservation page — `/reservation` (redirect to login; spec 3)  
-* Cannot POST `/api/reservations` (spec 3 & 6)  
-* Cannot access `/profile` (spec 3)  
-* Cannot access any `/admin/*` pages (spec 4 & 5)  
-
+* Cannot access reservation page — `/reservation` (redirect to login; spec 3)
+* Cannot add reservation — `/reservation` (redirect to login; spec 3)
+* Cannot update or delete reservations
+* Cannot delete users
+* Cannot update or delete ressources
 ---
 
 ### 🧑‍💼 **Reserver**
@@ -43,17 +41,19 @@
 
 **✅ Can do**
 
-* Can book a resource — `/reservation` + `/api/reservations` (spec 6 & 7)  
-* Can view own profile page — `/profile` (spec 3)  
-* Can list resources — `/resources` (spec 8)  
-* Can access API endpoints `/api/users` and `/api/resources` (spec 3 & 8)  
+* Can do what a guest can do
+* Can book a reservation — `/reservation` (spec 6 & 7)  
+* Can add ressources — `/resources` 
+* Can access API endpoints `/api/users` and `/api/resources` (spec 3 & 8)
+* Can update the username reserver on its own reservation ⚠️ (does **not** match any spec)
+* Can update ressources 
 
 **❌ Cannot do**
 
-* Cannot access admin user list — `/admin/users` (spec 4 & 5)  
-* Cannot delete other users — `/api/admin/users/:id` (spec 5)  
-* Cannot access hidden admin pages even if URL manually typed — `/admin/*` (spec 4 & 5)  
-* Cannot modify resources (admin only; spec 4)  
+* Cannot register if under 15 years old (spec 6)
+* Cannot modify resources (admin only; spec 4)
+* Cannot delete reservations from other username (admin only; spec 3)  
+
 
 ---
 
@@ -63,14 +63,21 @@
 
 **✅ Can do**
 
-* Can add a resource — `/admin/resources/new` (spec 4)  
-* Can delete a reserver — `/admin/users/delete/:id` (spec 5)  
-* Can manage all reservations — `/admin/reservations` (spec 4)  
-* Can view all users — `/admin/users` (spec 4 & 5)  
-* Can access API endpoints `/api/users`, `/api/reservations`, `/api/resources` (spec 4, 5 & 8)  
+* Can do all of the rights of reserver and guest
+* Can delete reservation
+* Can change reserver username
+* Can update all reservations
+* Can delete all reservations
+* Can change ressources 
+* Can add a resource — `/ressources` (spec 4)
+* Can access API endpoints `/api/users`, `/api/reservations`, `/api/resources` (spec 4, & 8)  
+* Can manage all reservations — `/reservations` (spec 4)  
 
 **❌ Cannot do**
 
-* Cannot perform actions blocked by UI even if API exists — none observed (no conflicting spec)  
+* Cannot view all users (spec 4 & 5)
+* Cannot delete reserver ⚠️ (does **not** match spec 5)
+* Cannot delete ressources ⚠️ (does **not** match spec 4)
+
 
 ---
