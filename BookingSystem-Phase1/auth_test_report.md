@@ -38,7 +38,7 @@
 
 * Cannot access admin user list — `/admin/users` (matches spec)  
 * Cannot delete other users — `/api/admin/users/:id` (matches spec)  
-* Cannot access hidden admin pages even if URL manually typed — `/admin/*` (matches spec)  
+* Cannot access hidden admin pages even if URL manually typed `/admin/*` (matches spec)  
 * Cannot modify resources (admin only; matches spec)  
 
 ---
@@ -57,8 +57,6 @@
 
 **❌ Cannot do**
 
-* Cannot perform actions blocked by UI even if API exists — none observed  
-* ⚠️ SQL Injection vulnerability detected by ZAP on `/login`, `/register`, `/resources` (High risk; parameter `host`)  
-* ⚠️ Format String issues detected by ZAP on `/status.html`, `/login`, `/register`, `/resources` (Medium risk)
+* Cannot perform actions blocked by UI even if API exists, none observed  
 
 ---
