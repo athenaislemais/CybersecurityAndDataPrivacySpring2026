@@ -1,5 +1,9 @@
-# 🔐 **Authorization Test**
+# 🔐 Authorization Test Report - Phase 3
 
+## 📋 Project Overview
+This report documents the authorization testing for the resource booking system. The goal is to verify if the actual implementation matches the official specifications (Specs 1–8) and follows the Principle of Least Privilege (PoLP).
+
+---
 ## 🧩 Specification Reference
 
 1. The system is accessed via a web browser.  
@@ -15,65 +19,131 @@
 
 ---
 
-### 🧑‍🦲 **Guest**
+
+## 🧑‍🦲 Guest
+*Unauthenticated user. Should only access public resources.*
+
+### ✅ Can do
+
+* **View public resource list** — `/`
+  * *Observation:* Accessible without login (Spec 8).
+* **Access login form** — `/login`
+  * *Observation:* Accessible (Spec 2).
+* **Access registration form** — `/register`
+  * *Observation:* Accessible (Spec 2).
+* **View booked resources** — `/`
+  * *Observation:* Displays booked resources without revealing reserver identity (Spec 8).
+
+
+### ❌ Cannot do
+* **Access reservation page** — `/reservation`
+  * *Observation:* Blocked. Redirects to back home. (Spec 3)
+
+### ⚠️ Vulnerabilities (GDPR Violation)
+* **Access API endpoints** — `/api/reservations`
+  * *Observation:* **CRITICAL VULNERABILITY** Accessible without authentication. Exposes tokens, usernames, and roles of all registered users (Violates Spec 8, 9 & 10).
 
 ---
 
-**✅ Can do**
+## 🧑‍💼 Reserver
+*Logged in as: `john@doe.com`*
 
-* Can access of the system on its web browser (spec 1)
-* Can access login form — `/login` (spec 2)
-* Can access registration form — `/register` (spec 2)
-* Can access booked ressources (spec 8)
-* Can access API endpoints without authentication, were the guest can see token, username and role — `/api/users`, `/api/reservations`, `/api/resources` ⚠️ (does **not** match any spec, spec 8 9 & 10 not respected)  
+### ✅ Can do
+* **View own profile** — `/`
+  * *Observation:* Functional. The application uses session cookies for authentication, so user data is not exposed in the URL(Spec 10).
+* **Book a resource** — `/reservation`
+  * *Observation:* Accessible. User can book on an hourly basis (Spec 7).
+  * *Note:* Requires user to be over 15 years old (Spec 6).
+* **Add/Update resources** — `/resources`
+  * *Observation:* Accessible. User can creat ressources.
 
-**❌ Cannot do**
+### ❌ Cannot do
+* **View other user profile** 
+  * *Observation:* no indication in the URL
+* **Register if under 15 years old** 
+  * *Observation:* Succesfuly rejeted if register with an age uder 15 years old.
 
-* Cannot access reservation page — `/reservation` (redirect to login; spec 3)
-* Cannot add reservation — `/reservation` (redirect to login; spec 3)
-* Cannot update or delete reservations
-* Cannot delete users
-* Cannot update or delete ressources
----
 
-### 🧑‍💼 **Reserver**
-
----
-
-**✅ Can do**
-
-* Can do what a guest can do
-* Can book a reservation — `/reservation` (spec 6 & 7)  
-* Can add ressources — `/resources` 
-* Can access API endpoints `/api/users` and `/api/resources` (spec 3 & 8)
-* Can update the username reserver on its own reservation ⚠️ (does *not* respect 9 & 10)
-* Can update ressources name
-
-**❌ Cannot do**
-
-* Cannot register if under 15 years old (spec 6)
-* Cannot modify resources (admin only; spec 4)
-* Cannot delete reservations from other username (admin only; spec 3)  
-
+### ⚠️ Vulnerabilities (GDPR Violation)
+* **IDOR on Bookings** — `/reservation?id=X`
+    * *Observation:* Users can access and modify bookings belonging to others by changing the ID in the URL.
+* **Privilege Escalation** — `/api/resources/:id`
+  * *Observation:* Users can take ownership of another user's booking by changing the "Reserver" field in the form, and subsequently delete it.
+* **GDPR Compliance**
+  * *Observation:* Users cannot delete their own accounts (Violation of GDPR "Right to be Forgotten").
 
 ---
 
-### 🧑‍💼🛡️ **Administrator**
+## 🧑‍💼🛡️ Administrator
+*High-privilege account with full control. Logged in as: `mari@doe.com`*
+
+### ✅ Can do
+* **Full System Management** 
+  * *Observation:* Full control over resource management (Spec 4). Sessions are handled via cookies, not URL parameters.
+* **Delete a reserver** — `/reservation?id=X`
+  * *Observation:* Functional (Spec 5).
+* **Manage all reservations** — `/reservations`
+  * *Observation:* Can view and modify any booking (Spec 4).
+* **Access API endpoints** — `/api/users`, `/api/reservations`, `/api/resources`
+    * *Observation:* Can access API endponts (Spec 4 & 8).
+
+### ❌ Cannot do
+* **View all users via dedicated admin panel**
+    * *Observation:* No dedicated admin page for user management exists, must use API (Spec 4 & 5 partially met).
+* **Delete reserver via UI**
+    * *Observation:* Cannot delete users directly through the web interface (Spec 5).
+* **Delete resources via UI**
+    * *Observation:* Cannot delete resources directly through the web interface (Spec 4).
 
 ---
 
-**✅ Can do**
+## ⚠️ Findings
 
-* Can do all what a reserver and a guest can do
-* Can add and modify resources — `/ressources` (spec 4)
-* Can add, modify and remove reservations — `/reservations` (spec 4)
-* Can change all reserver usernames
-* Can access API endpoints `/api/users`, `/api/reservations`, `/api/resources` (spec 4, & 8)  
+#### Critical Vulnerabilities (GDPR & Security)
+* **Unauthenticated API Exposure (`/api/users`, `/api/reservations`)**
+    * **Description:** The API endpoints used to fetch user data and reservation details are accessible without authentication.
+    * **Impact:** Any guest can retrieve all user emails, session tokens, and roles. This is a critical violation of GDPR (Privacy by Design and Default).
+    * **Spec Violation:** 8, 9, 10.
 
-**❌ Cannot do**
+#### Authorization Bypasses (IDOR)
+* **Unauthorized Booking Modification (`/reservation?id=X`)**
+    * **Description:** Registered users can change the `id` parameter in the URL to access the modification form of bookings they do not own.
+    * **Impact:** Users can alter reservation times and details for other users.
+    * **Spec Violation:** 3, 4.
 
-* Cannot delete reserver ⚠️ (does **not** match spec 5)
-* Cannot delete ressources ⚠️ (does **not** match spec 4)
+* **Privilege Escalation & Unauthorized Deletion**
+    * **Description:** By modifying the "Reserver" field in a stolen booking form, a Reserver can take ownership of another user's booking and delete it.
+    * **Impact:** Users can delete data belonging to other users.
+    * **Spec Violation:** 3, 4, 5.
 
+#### Functionality & Specification Gaps
+* **Missing User Management Interface (Admin)**
+    * **Description:** The Administrator does not have a dedicated UI panel to manage users (delete reservers). It must be done via API manipulation.
+    * **Spec Violation:** 5.
 
----
+* **Missing Resource Management Interface (Admin)**
+    * **Description:** The Administrator cannot delete resources through the web interface.
+    * **Spec Violation:** 4.
+
+* **Missing "Right to be Forgotten" (GDPR)**
+    * **Description:** There is no functionality for a Reserver to delete their own account.
+    * **Spec Violation:** 9.
+
+## Summary of role capabilities
+
+| Capability | Guest | Reserver | Admin |
+| :--- | :--- | :--- | :--- |
+| **View Resources (Public)** | Allowed | Allowed | Allowed |
+| **View Booking Identities** | Forbidden | Allowed | Allowed |
+| **Login / Register** | Allowed | Allowed | Allowed |
+| **Book Resources** | Forbidden | Allowed | Allowed |
+| **Modify Own Bookings** | Forbidden | Allowed | Allowed |
+| **Modify/Delete Others' Bookings** | Forbidden | Vulnerable (IDOR) | Allowed |
+| **Add/Modify Resources** | Forbidden | Allowed | Allowed |
+| **Delete Resources/Users** | Forbidden | Forbidden | Vulnerable (API Only) |
+| **Access API (`/api/users`)** | Vulnerable (No Auth)| Allowed | Allowed |
+
+### Legend
+* **Allowed:** Functionality works according to specifications.
+* **Forbidden:** Functionality is properly blocked.
+* **Vulnerable:** Functionality works, but violates security, GDPR, or spec requirements.
