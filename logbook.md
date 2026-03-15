@@ -18,6 +18,7 @@
 | 18.02.2026 | 7 | Phase 2 | installation of hash, hydra, crunch: 5 passwords cracked |
 | 01.03.2026 | 8 | Phase 3 | Phase 3:  Gobuster download, OWASP Zap problems but fixed |
 | 11.03.2026 | 2 | PortSwigger | 3 labs on Cross-site scripting |
+| 15.03.2026 | 4 | Phase 4 | GDPR check, cookie policy, term of service, privacy policy|
 
 
 
