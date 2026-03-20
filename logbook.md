@@ -17,10 +17,10 @@
 | 12.02.2026 | 5 | Lab session at Campus | Checked up on the uses of the softwares + a Portswigger lab with Burp Suite + Beginning of Phase 2 |
 | 18.02.2026 | 7 | Phase 2 | installation of hash, hydra, crunch: 5 passwords cracked |
 | 01.03.2026 | 8 | Phase 3 | Phase 3:  Gobuster download, OWASP Zap problems but fixed |
-| 11.03.2026 | 2 | PortSwigger | 3 labs on Cross-site scripting |
+| 11.03.2026 | 3 | PortSwigger | 3 labs on Cross-site scripting |
 | 15.03.2026 | 4 | Phase 4 | GDPR check, cookie policy, term of service, privacy policy|
-| 16.03.2026 | 5 | Portswigger | 9 labs |
-| 20.03.2026 | 6 | Final Report | Writing final report |
+| 16.03.2026 | 7 | Portswigger | 9 labs |
+| 20.03.2026 | 3 | Final Report | Writing final report |
 
 
 
